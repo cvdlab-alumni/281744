@@ -131,7 +131,11 @@ step2D = SIMPLICIAL_COMPLEX([[0,0],[0,1.56],[1.5,1.56,],[1.5,1.56]])([[0,2,1],[1
 
 step3D = MAP([S0,S2,S1])(EXTRUDE([4.5])(step2D));
 ramp = STRUCT(REPLICA(7)([step3D,T([0,2])([1.5,1.56])]))
-buildings = STRUCT([floor0,floor1,pillars,floor2,floor3,floor4,estwall,estwindow,estDoppia,T([0])([-5])(estDoppia),northwall,southwall,westwall,northwindows,estwindows,T([1,2])([0.4,11])(southwindows),T([1,2])([0.4,21])(southwindows),T([0,1])([21,20])(ramp),T([0,1,2])([6,20,10])(ramp),T([0,1,2])([21,20,20])(ramp)]);
+stair1=T([0,1])([21,20])(ramp)
+stair2=T([0,1,2])([6.5,20,10.2])(ramp)
+stair3=T([0,1,2])([22.5,20,20.2])(ramp)
+
+buildings = STRUCT([floor0,floor1,pillars,floor2,floor3,floor4,estwall,estwindow,estDoppia,T([0])([-5])(estDoppia),northwall,southwall,westwall,northwindows,estwindows,T([1,2])([0.4,11])(southwindows),T([1,2])([0.4,21])(southwindows),stair1,stair2,stair3]);
 
 
 DRAW(buildings);
