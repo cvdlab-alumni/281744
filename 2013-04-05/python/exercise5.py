@@ -153,7 +153,7 @@ estDoppia = S([3])([1.5])(T([1,2,3])([21.5,25,10])(STRUCT([estwindow1,estwindow2
 ##buildings = STRUCT([floor0,floor1,pillars,floor2,floor3,floor4,estwall,estwindow,estDoppia,T([1])([-5])(estDoppia),northwall,southwall,westwall,northwindows,estwindows,T([2,3])([0.4,11])(southwindows),T([2,3])([0.4,21])(southwindows)])
 ##VIEW(buildings)
 ##es5
-step2d = MKPOL([[[0,0],[0,1.7],[2.66,1],[2.66,1.7]],[[1,2,3,4]],None]);
+step2d = MKPOL([[[0,0],[0,1.56],[1.5,1.56],[1.5,1.56]],[[1,2,3,4]],None]);
 ##voglio  estrudere su y ed scambiare y e z
 step3d = MAP([S1,S3,S2])(PROD([step2d,Q(4.5)]));
 ramp =  STRUCT(NN(7)([step3d,T([1,3])([1.5,1.56])]));
