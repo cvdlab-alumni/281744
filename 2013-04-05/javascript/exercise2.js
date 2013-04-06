@@ -1,4 +1,3 @@
-
 var circle = CIRCLE(0.5)(36);
 var pillar = EXTRUDE([10])(circle)
 
@@ -20,8 +19,6 @@ pillars1 = STRUCT([pillars1square,pillars12square,T([0,1,2])([2,19.5,10])(pillar
 pillars2 = T([0,1,2])([-0.5,-0.5,20])(STRUCT([pillars2square,T([1])([20])(pillars22square)]))
 pillars = STRUCT([pillars0, pillars1,pillars2,pillars3])
 
-##es2
-
 floor10 = T([0])([-0.5])(SIMPLEX_GRID([ [41],[20],[1]  ]))
 floor11 = SIMPLEX_GRID([ [3],[-20,5],[1]])
 floor12 = SIMPLEX_GRID([ [-17,23],[-20,5],[1]])
@@ -39,21 +36,21 @@ floor41= T([0,1,2])([-0.5,-0.5,40])(SIMPLEX_GRID([ [-19.5,21.5],[25.5],[1]]))
 floor42 = T([0,1,2])([-0.5,-0.5,40])(SIMPLEX_GRID([ [19.5],[-20,5.5],[1]]))
 
 
-dom = DOMAIN([[0,PI],[0,PI]])([32,32])
+function annulus_sector (alpha, r, R) {
+  var domain = DOMAIN([[0,alpha],[r,R]])([36,1]);
+  var mapping = function (v) {
+    var a = v[0];
+    var r = v[1];
+    
+    return [r*COS(a), r*SIN(a)];
+  }
+  var model = MAP(mapping)(domain);
+  return model;
+}
 
-var circlep =  function(R,r){
-    return function (p){
-        u,v = p;
-        return (r*COS(u)+R)*COS(v),(r*COS(u)+R)*SIN(v);
-};
-};
 
-circle= MAP(circlep)(dom);
-
-
-
-floor01 = R([0,1])(-PI/2)(circle(5,0.5));
-floor02 = R([0,1])(PI)(circle(1.5,0.5));
+floor01 = S([1,2])([3,3])(R([0,1])(-PI/2)(annulus_sector(PI, 1, 2)));
+floor02 = R([0,1])(PI)(annulus_sector(PI, 1, 2));
 
 floor03 = EXTRUDE([1])(POLYLINE([ [29.5,25],[-0.5,25],[-0.5,19.5],[5,19.5],[5,8],[29.5,8],[29.5,25]]))
 floor03 = SIMPLEX_GRID([[31],[-24,1]])
@@ -72,4 +69,4 @@ floor3 = T([0,1,2])([-0.5,-0.5,30])(STRUCT([floor30,floor31,floor32]))
 floor4 = STRUCT([floor41,floor42])
 
 buildings = STRUCT([floor04,floor1,pillars,floor2,floor3,floor4]);
-VIEW(buildings);
+DRAW(buildings);
