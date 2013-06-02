@@ -19,7 +19,9 @@
 
 
   var scmodel = (function () {
-  function generateKnot(controlPoints){
+  //modello joypad console WIIu
+
+function generateKnot(controlPoints){
   lun = controlPoints.length + 2 + 1;
   var nodeSeq = []
   nodeSeq[0] = 0;
@@ -243,7 +245,7 @@ var model = T([0,2])([-0.5,-0.1])(STRUCT([T([0,2])([0.5,0.1])(r),T([0,1,2])([0.7
   exports.scmodel = scmodel;
 
   if (!module.parent) {
-    fs.writeFile('/Users/ermatto/Desktop/showcase/data.json', JSON.stringify(scmodel.toJSON()));
+    fs.writeFile('/Users/ermatto/Desktop/281744/showcase/data.json', JSON.stringify(scmodel.toJSON()));
   }
 
 }(this));

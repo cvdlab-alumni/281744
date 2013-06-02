@@ -1,3 +1,5 @@
+//modello joypad console WIIu
+
 function generateKnot(controlPoints){
   lun = controlPoints.length + 2 + 1;
   var nodeSeq = []
