@@ -1,18 +1,3 @@
-function generateKnot(controlPoints){
-  lun = controlPoints.length + 2 + 1;
-  var nodeSeq = []
-  nodeSeq[0] = 0;
-  nodeSeq[1] = 0;
-  nodeSeq[2] = 0;
-  for (i = 3; i <= lun - 4 ; i++) {
-    nodeSeq[i] = i-2;
-  };
-  nodeSeq[lun-1] = i-2
-  nodeSeq[lun-2] = i-2
-  nodeSeq[lun-3] = i-2
-  return nodeSeq
-}
-
 function rgb01(r, g, b){
   var r0 = r/255.0;
   var g0 = g/255.0;
@@ -103,5 +88,6 @@ var profile2 = BEZIER(S0)([[5,0,4.2],[5.2,0,4.1],[5,0,4]]);
 var mapping2 = ROTATIONAL_SURFACE(profile2);
 var surfaceTor = MAP(mapping2)(domainRot);
 var parteSupCompleta =  STRUCT([COLOR(rgb01(47,51,53))(surfaceTor),coloredSurface])
+var model = STRUCT([T([0,1])([2,2])(parteSupCompleta),baseCompleta])
 
-DRAW(STRUCT([T([0,1])([2,2])(parteSupCompleta),baseCompleta]))
+DRAW(model)

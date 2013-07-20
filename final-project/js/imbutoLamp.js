@@ -37,5 +37,6 @@ var lamp = COLOR([0.4,0.4,0.4])(MAP(surSup)(domainRot))
 var bar = COLOR(rgb01(246,172,0))(CYL_SURFACE([0.2,19])(30))
 
 var base = COLOR([0.4,0.4,0.4])(EXTRUDE([0.5])(DISK()()))
-var lampada = STRUCT([bar,T([2])([19])(lamp),T([2])([-0.5])(S([0,1])([2,2])(base))])
-DRAW(lampada)
+var model = STRUCT([bar,T([2])([19])(lamp),T([2])([-0.5])(S([0,1])([2,2])(base))])
+
+DRAW(model)
